@@ -444,7 +444,7 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
     <div class="stepper-bar" id="stepperBar">
       <div class="stepper-step active" id="sp-1"><div class="step-num" id="sn-1">1</div><div class="step-label">Subscribe</div></div>
       <div class="step-connector" id="sc-1"></div>
-      <div class="stepper-step" id="sp-2"><div class="step-num" id="sn-2">2</div><div class="step-label">KYC Check</div></div>
+      <div class="stepper-step" id="sp-2"><div class="step-num" id="sn-2">2</div><div class="step-label">Compliance</div></div>
       <div class="step-connector" id="sc-2"></div>
       <div class="stepper-step" id="sp-3"><div class="step-num" id="sn-3">3</div><div class="step-label">NAV Accept</div></div>
       <div class="step-connector" id="sc-3"></div>
@@ -511,7 +511,7 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
           <div class="stat-pill"><strong>ERC-7540</strong> Standard</div>
         </div>
         <div class="fund-cards fade-in">
-          <div class="fund-card" onclick="nav(document.querySelector('.rail-item[data-view=dealing]'))">
+          <div class="fund-card">
             <div class="fund-card-head">
               <div><div class="fund-card-name">Rayls MMF Alpha</div><div class="fund-card-type">Money Market Fund</div></div>
               <span class="badge green">Active</span>
@@ -522,9 +522,12 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
               <div class="fund-card-metric">Units Outstanding<strong>1,225,800</strong></div>
               <div class="fund-card-metric">Pending<strong>3 orders</strong></div>
             </div>
-            <div style="margin-top:12px;display:flex;gap:6px">
-              <span class="badge yellow">Daily Dealing</span>
-              <span class="badge purple">20bps Mgmt</span>
+            <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center">
+              <div style="display:flex;gap:6px">
+                <span class="badge yellow">Daily Dealing</span>
+                <span class="badge purple">20bps Mgmt</span>
+              </div>
+              <button class="btn btn-yellow btn-sm" onclick="subscribeFund('Rayls MMF Alpha','$102.47')">Subscribe</button>
             </div>
           </div>
           <div class="fund-card">
@@ -538,9 +541,12 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
               <div class="fund-card-metric">Units Outstanding<strong>683,400</strong></div>
               <div class="fund-card-metric">Pending<strong>2 orders</strong></div>
             </div>
-            <div style="margin-top:12px;display:flex;gap:6px">
-              <span class="badge yellow">Weekly Dealing</span>
-              <span class="badge purple">35bps Mgmt</span>
+            <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center">
+              <div style="display:flex;gap:6px">
+                <span class="badge yellow">Weekly Dealing</span>
+                <span class="badge purple">35bps Mgmt</span>
+              </div>
+              <button class="btn btn-yellow btn-sm" onclick="subscribeFund('Rayls Bond Fund','$98.31')">Subscribe</button>
             </div>
           </div>
           <div class="fund-card">
@@ -554,10 +560,13 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
               <div class="fund-card-metric">Units Outstanding<strong>308,900</strong></div>
               <div class="fund-card-metric">Pending<strong>1 order</strong></div>
             </div>
-            <div style="margin-top:12px;display:flex;gap:6px">
-              <span class="badge orange">Monthly Dealing</span>
-              <span class="badge purple">50bps Mgmt</span>
-              <span class="badge blue">Lock-up 90d</span>
+            <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center">
+              <div style="display:flex;gap:6px">
+                <span class="badge orange">Monthly Dealing</span>
+                <span class="badge purple">50bps Mgmt</span>
+                <span class="badge blue">Lock-up 90d</span>
+              </div>
+              <button class="btn btn-yellow btn-sm" onclick="subscribeFund('Rayls Credit Opportunities','$104.89')">Subscribe</button>
             </div>
           </div>
           <div class="fund-card">
@@ -571,10 +580,20 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
               <div class="fund-card-metric">Units Outstanding<strong>225,900</strong></div>
               <div class="fund-card-metric">Pending<strong>1 order</strong></div>
             </div>
-            <div style="margin-top:12px;display:flex;gap:6px">
-              <span class="badge yellow">Intra-day</span>
-              <span class="badge purple">10bps Mgmt</span>
+            <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center">
+              <div style="display:flex;gap:6px">
+                <span class="badge yellow">Intra-day</span>
+                <span class="badge purple">10bps Mgmt</span>
+              </div>
+              <button class="btn btn-yellow btn-sm" onclick="subscribeFund('Rayls Treasury+','$100.02')">Subscribe</button>
             </div>
+          </div>
+        </div>
+        <div style="margin-bottom:16px;padding:12px 16px;background:rgba(236,251,62,.06);border:1px solid rgba(236,251,62,.15);border-radius:8px;font-size:12px;color:var(--text2);display:flex;align-items:start;gap:10px">
+          <span style="color:var(--yellow);font-size:16px;line-height:1">&#9432;</span>
+          <div>
+            <strong style="color:var(--yellow)">Forward Pricing Model</strong><br>
+            Subscriptions are submitted as a <strong style="color:var(--text)">dollar amount</strong> (e.g. $500,000 USDC), not a share quantity. The NAV/Unit shown above is the <em>last published</em> price. Your actual settlement price is determined at the <strong style="color:var(--text)">next NAV strike</strong>, and the exact number of shares you receive is calculated at that point. This forward pricing model prevents front-running and is mandatory for regulated fund structures. Click <strong style="color:var(--text)">Subscribe</strong> to walk through the full dealing cycle.
           </div>
         </div>
         <div class="panel">
@@ -600,16 +619,24 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
           <div style="flex:1"></div>
           <div id="dealRoleDesc" style="font-size:11px;color:var(--text2);text-align:right">You see your own orders, status, and claims</div>
         </div>
+        <div style="margin-bottom:16px;padding:10px 14px;background:rgba(180,154,255,.08);border:1px solid rgba(180,154,255,.2);border-radius:8px;font-size:11px;color:var(--text2);display:flex;align-items:center;gap:8px">
+          <span style="color:var(--purple);font-size:14px">&#9432;</span>
+          <span><strong style="color:var(--purple)">Prerequisite:</strong> Initial KYC/AML onboarding and wallet whitelisting is completed before an investor can interact with the vault. The compliance step below is the <strong>per-transaction screening</strong> (sanctions re-check, accreditation, source-of-funds) that runs on each order.</span>
+        </div>
+        <div style="margin-bottom:16px;padding:10px 14px;background:rgba(236,251,62,.06);border:1px solid rgba(236,251,62,.15);border-radius:8px;font-size:11px;color:var(--text2);display:flex;align-items:center;gap:8px">
+          <span style="color:var(--yellow);font-size:14px">&#9432;</span>
+          <span><strong style="color:var(--yellow)">Forward Pricing:</strong> Investors submit a <strong>dollar amount</strong>, not a share quantity. The exact number of units is calculated only after the NAV strike price is determined. This prevents front-running and is mandatory for regulated fund structures (UCITS, SEC Rule 22c-1).</span>
+        </div>
         <div class="toggle-group" style="margin-bottom:20px">
           <button class="toggle-btn active" onclick="setDealPath('happy')">Happy Path</button>
-          <button class="toggle-btn" onclick="setDealPath('kyc-fail')">KYC Rejection</button>
+          <button class="toggle-btn" onclick="setDealPath('kyc-fail')">Compliance Rejection</button>
           <button class="toggle-btn" onclick="setDealPath('nav-dispute')">NAV Dispute</button>
           <button class="toggle-btn" onclick="setDealPath('cancel')">Cancellation</button>
         </div>
         <div class="flow-container">
           <div class="flow-steps" id="flowSteps">
             <div class="flow-step active" id="fs-1"><div class="flow-connector"></div><div class="flow-step-num">1</div><div class="flow-step-label">Subscription</div></div>
-            <div class="flow-step" id="fs-2"><div class="flow-connector"></div><div class="flow-step-num">2</div><div class="flow-step-label">KYC / Compliance</div></div>
+            <div class="flow-step" id="fs-2"><div class="flow-connector"></div><div class="flow-step-num">2</div><div class="flow-step-label">Compliance Screening</div></div>
             <div class="flow-step" id="fs-3"><div class="flow-connector"></div><div class="flow-step-num">3</div><div class="flow-step-label">NAV Strike</div></div>
             <div class="flow-step" id="fs-4"><div class="flow-connector"></div><div class="flow-step-num">4</div><div class="flow-step-label">Settlement</div></div>
             <div class="flow-step" id="fs-5"><div class="flow-step-num">5</div><div class="flow-step-label">Confirmation</div></div>
@@ -862,7 +889,7 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
             <div class="panel-title">ERC-7540 Async State Machine</div>
             <table class="tbl">
               <tr><th>State</th><th>On-Chain</th><th>Off-Chain</th></tr>
-              <tr><td><span class="badge yellow">Pending</span></td><td>Assets/shares locked in vault</td><td>KYC verification, compliance screening, wire initiation</td></tr>
+              <tr><td><span class="badge yellow">Pending</span></td><td>Assets locked in vault escrow (not yet invested)</td><td>Per-transaction compliance screening, sanctions re-check, NAV strike pending</td></tr>
               <tr><td><span class="badge purple">Claimable</span></td><td>NAV accepted, settlement price locked</td><td>Custody confirmed, wire cleared, valuation audit</td></tr>
               <tr><td><span class="badge green">Claimed</span></td><td>Units minted or assets released</td><td>Trade confirmation, books updated</td></tr>
             </table>
@@ -1229,8 +1256,20 @@ function goHome() {
   document.getElementById('roleModal').classList.remove('hidden');
 }
 
+function subscribeFund(fundName, lastNav) {
+  // Navigate to dealing cycle
+  const dealLink = document.querySelector('.rail-item[data-view="dealing"]');
+  nav(dealLink);
+  // Reset to happy path
+  STATE.dealPath = 'happy';
+  document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('.toggle-btn').classList.add('active');
+  resetDeal();
+  toast('Subscription flow started for ' + fundName + ' (last NAV: ' + lastNav + ')', 'info');
+}
+
 // ===== STEPPER =====
-const STEPPER_NAMES = ['Subscribe','KYC Check','NAV Accept','Settlement','Claim Tokens','Reporting'];
+const STEPPER_NAMES = ['Subscribe','Compliance','NAV Accept','Settlement','Claim Tokens','Reporting'];
 
 function updateStepper(doneCount, activeIdx) {
   for (let i = 0; i < 6; i++) {
@@ -1335,20 +1374,20 @@ const DEAL_STEPS_BY_ROLE = {
     happy: [
       {title:'Step 1: Submit My Subscription', detail:[
         ['My Wallet','0x7a3f...8c2d (Meridian Capital)'],
-        ['Deposit Amount','$500,000 USDC'],
+        ['Investment Amount','$500,000 USDC (dollar amount, not shares)'],
         ['My Action','requestDeposit(500000, controller, owner)'],
-        ['Assets Status','Locked in vault escrow'],
+        ['Assets Status','Locked in vault escrow (not yet invested)'],
         ['Order Status','<span class="badge yellow">Pending</span>'],
-        ['Expected Price','Forward-priced at next NAV Strike']
-      ], log:'MY ORDER: requestDeposit() submitted | $500K USDC locked in escrow | Awaiting compliance review...'},
-      {title:'Step 2: My Compliance Check', detail:[
-        ['My KYC','<span class="badge green">Verified</span>'],
-        ['My AML Status','<span class="badge green">Cleared</span>'],
-        ['My Accreditation','<span class="badge green">Qualified Investor</span>'],
+        ['Pricing','Forward-priced: exact shares calculated at next NAV Strike']
+      ], log:'MY ORDER: requestDeposit() submitted | $500K USDC locked in escrow | Forward-priced at next NAV strike...'},
+      {title:'Step 2: Transaction Compliance Screening', detail:[
+        ['AML/Sanctions Re-check','<span class="badge green">Cleared</span>'],
+        ['Accreditation Status','<span class="badge green">Qualified Investor</span>'],
+        ['Source of Funds','<span class="badge green">Verified</span>'],
         ['Wait Time','Processing off-chain (async)'],
         ['Visibility','I cannot see other investors\' status'],
-        ['Next','Awaiting NAV strike price']
-      ], log:'MY STATUS: KYC verified | AML cleared | Accreditation confirmed | Awaiting NAV...'},
+        ['Note','Initial KYC/onboarding was completed before I could access the vault']
+      ], log:'MY STATUS: AML re-check cleared | Accreditation confirmed | Source of funds verified | Awaiting NAV...'},
       {title:'Step 3: NAV Price Published', detail:[
         ['Strike Price','$102.47 per unit'],
         ['My Expected Units','~4,879 units'],
@@ -1381,15 +1420,15 @@ const DEAL_STEPS_BY_ROLE = {
         ['Assets Status','Locked in escrow'],
         ['Order Status','<span class="badge yellow">Pending</span>']
       ], log:'MY ORDER: requestDeposit() submitted | $2M USDC locked | Awaiting compliance review...'},
-      {title:'Step 2: My KYC Failed', detail:[
-        ['My KYC Status','<span class="badge red">FAILED</span>'],
-        ['Reason Given','Compliance requirements not met'],
+      {title:'Step 2: Compliance Screening Failed', detail:[
+        ['AML/Sanctions Check','<span class="badge red">FLAGGED</span>'],
+        ['Reason Given','Transaction compliance requirements not met'],
         ['My Assets','Being returned to my wallet'],
         ['Refund Method','claimDepositCancel() available'],
         ['Refund Amount','$2,000,000 USDC (full)'],
-        ['Note','No fees charged on failed KYC']
-      ], log:'MY KYC FAILED | Order rejected | $2M USDC refund initiated | No fees charged', fail:true,
-      failContent:'<div style="padding:12px;background:rgba(239,68,68,.1);border:1px solid var(--red);border-radius:8px;font-size:12px"><strong style="color:var(--red)">My Order Rejected: Compliance Issue</strong><br><br>My subscription was rejected during compliance review. I was not given the specific reason (privacy-preserved by Rayls Node).<br><br><strong>What happens to my funds:</strong><br>1. My $2,000,000 USDC is automatically queued for return<br>2. I call claimDepositCancel() to retrieve funds<br>3. Full amount returned to my wallet, no fees deducted<br><br><span style="color:var(--text2)">I can resubmit after resolving compliance requirements with the fund administrator.</span></div>'}
+        ['Note','No fees charged. Initial KYC was valid but per-transaction screening flagged this order.']
+      ], log:'COMPLIANCE FAILED | Order rejected on per-transaction screening | $2M USDC refund initiated | No fees charged', fail:true,
+      failContent:'<div style="padding:12px;background:rgba(239,68,68,.1);border:1px solid var(--red);border-radius:8px;font-size:12px"><strong style="color:var(--red)">My Order Rejected: Transaction Screening</strong><br><br>My subscription was rejected during per-transaction compliance screening. My initial KYC/onboarding was valid, but this specific transaction was flagged. I was not given the specific reason (privacy-preserved by Rayls Node).<br><br><strong>What happens to my funds:</strong><br>1. My $2,000,000 USDC is automatically queued for return<br>2. I call claimDepositCancel() to retrieve funds<br>3. Full amount returned to my wallet, no fees deducted<br><br><span style="color:var(--text2)">I can resubmit after resolving compliance requirements with the fund administrator.</span></div>'}
     ],
     'nav-dispute': [
       {title:'Step 1: Submit My Subscription', detail:[
@@ -1397,10 +1436,10 @@ const DEAL_STEPS_BY_ROLE = {
         ['Deposit Amount','$5,000,000 USDC'],
         ['Order Status','<span class="badge yellow">Pending</span>']
       ], log:'MY ORDER: requestDeposit() | $5M locked | Awaiting processing...'},
-      {title:'Step 2: My Compliance Cleared', detail:[
-        ['My KYC','<span class="badge green">Verified</span>'],
-        ['My AML','<span class="badge green">Cleared</span>']
-      ], log:'MY STATUS: Compliance cleared | Awaiting NAV strike...'},
+      {title:'Step 2: Compliance Screening Passed', detail:[
+        ['AML/Sanctions Re-check','<span class="badge green">Cleared</span>'],
+        ['Accreditation','<span class="badge green">Verified</span>']
+      ], log:'MY STATUS: Per-transaction compliance cleared | Awaiting NAV strike...'},
       {title:'Step 3: NAV Delayed', detail:[
         ['Status','<span class="badge orange">NAV Under Review</span>'],
         ['Impact on Me','My order remains pending, funds safe in escrow'],
@@ -1444,14 +1483,14 @@ const DEAL_STEPS_BY_ROLE = {
         ['My Action Required','Review compliance, approve for settlement'],
         ['Status','<span class="badge yellow">Awaiting My Review</span>']
       ], log:'INCOMING: requestDeposit() from Meridian Capital | $500K | Epoch queue: 4 orders, $3.2M total volume'},
-      {title:'Step 2: Run Compliance Screening', detail:[
-        ['My Action','Execute KYC/AML screening on Curator Rayls Node'],
+      {title:'Step 2: Run Transaction Compliance Screening', detail:[
+        ['My Action','Execute per-transaction AML/sanctions screening on Curator Rayls Node'],
         ['Investor Screened','Meridian Capital (0x7a3f...8c2d)'],
-        ['KYC Result','<span class="badge green">Verified</span>'],
-        ['AML/OFAC Screening','<span class="badge green">Cleared</span>'],
+        ['Initial KYC','<span class="badge green">Pre-verified (onboarding complete)</span>'],
+        ['AML/OFAC Re-screening','<span class="badge green">Cleared</span>'],
         ['Sanctions Check','<span class="badge green">No Match</span>'],
-        ['Whitelist Action','Address added to on-chain whitelist']
-      ], log:'COMPLIANCE: Screening complete | KYC: PASS | AML: CLEAR | OFAC: NO MATCH | Investor whitelisted'},
+        ['Source of Funds','<span class="badge green">Verified</span>']
+      ], log:'COMPLIANCE: Per-transaction screening complete | AML: CLEAR | OFAC: NO MATCH | Source of funds verified'},
       {title:'Step 3: Review & Accept NAV', detail:[
         ['Submitted NAV','$102.47 (from Valuation Agent)'],
         ['Bloomberg Reference','$102.41 (deviation: 0.06%)'],
@@ -1485,16 +1524,16 @@ const DEAL_STEPS_BY_ROLE = {
         ['My Action Required','Run compliance screening'],
         ['Status','<span class="badge yellow">Awaiting My Review</span>']
       ], log:'INCOMING: requestDeposit() from Atlas Ventures | $2M | Queued for compliance review'},
-      {title:'Step 2: KYC Screening - REJECT', detail:[
-        ['My Action','Execute full KYC/AML/sanctions screening'],
+      {title:'Step 2: Transaction Screening - REJECT', detail:[
+        ['My Action','Execute per-transaction AML/sanctions screening'],
         ['Investor','Atlas Ventures (0x9c4d...1a7e)'],
-        ['KYC Result','<span class="badge red">FAILED</span>'],
-        ['OFAC Match','<span class="badge red">Beneficial owner on SDN list</span>'],
+        ['Initial KYC','<span class="badge green">Was valid at onboarding</span>'],
+        ['OFAC Re-screening','<span class="badge red">Beneficial owner now on SDN list</span>'],
         ['My Decision','Reject and initiate ERC-7887 cancellation'],
         ['Cancellation Method','cancelDepositRequest(0x042)'],
         ['Refund Status','$2,000,000 USDC queued for return']
-      ], log:'COMPLIANCE REJECT: OFAC match | cancelDepositRequest() triggered | $2M refund initiated | Audit logged', fail:true,
-      failContent:'<div style="padding:12px;background:rgba(239,68,68,.1);border:1px solid var(--red);border-radius:8px;font-size:12px"><strong style="color:var(--red)">Compliance Rejection: OFAC SDN Match</strong><br><br>Atlas Ventures beneficial owner matched OFAC Specially Designated Nationals list. As Curator, I must reject this request.<br><br><strong>My Actions Taken:</strong><br>1. KYC/AML screening flagged OFAC match<br>2. cancelDepositRequest(0x042) called from Curator Node<br>3. Cancellation enters Pending state on-chain<br>4. $2,000,000 USDC queued for investor refund<br>5. Event logged immutably for regulatory audit<br><br><span style="color:var(--text2)">Investor can claim refund via claimDepositCancel(). No settlement occurs. Full audit trail preserved on Curator Rayls Node.</span></div>'}
+      ], log:'COMPLIANCE REJECT: OFAC match on per-transaction screening | cancelDepositRequest() triggered | $2M refund initiated', fail:true,
+      failContent:'<div style="padding:12px;background:rgba(239,68,68,.1);border:1px solid var(--red);border-radius:8px;font-size:12px"><strong style="color:var(--red)">Compliance Rejection: OFAC SDN Match</strong><br><br>Atlas Ventures passed initial KYC onboarding, but per-transaction AML re-screening flagged a beneficial owner now on the OFAC Specially Designated Nationals list. As Curator, I must reject this order.<br><br><strong>My Actions Taken:</strong><br>1. Per-transaction AML screening flagged OFAC match<br>2. cancelDepositRequest(0x042) called from Curator Node<br>3. Cancellation enters Pending state on-chain<br>4. $2,000,000 USDC queued for investor refund<br>5. Event logged immutably for regulatory audit<br><br><span style="color:var(--text2)">Investor can claim refund via claimDepositCancel(). No settlement occurs. Full audit trail preserved on Curator Rayls Node.</span></div>'}
     ],
     'nav-dispute': [
       {title:'Step 1: Incoming Subscription Request', detail:[
@@ -1502,10 +1541,10 @@ const DEAL_STEPS_BY_ROLE = {
         ['Request Amount','$5,000,000 USDC'],
         ['Status','<span class="badge yellow">Queued</span>']
       ], log:'INCOMING: requestDeposit() from Westbridge | $5M | Queued'},
-      {title:'Step 2: Compliance Cleared', detail:[
-        ['Screening Result','<span class="badge green">All checks passed</span>'],
-        ['Whitelist Action','Investor whitelisted']
-      ], log:'COMPLIANCE: Westbridge cleared | Awaiting NAV for settlement'},
+      {title:'Step 2: Transaction Screening Passed', detail:[
+        ['Per-transaction Screening','<span class="badge green">All checks passed</span>'],
+        ['AML/Sanctions','<span class="badge green">Cleared</span>']
+      ], log:'COMPLIANCE: Per-transaction screening passed for Westbridge | Awaiting NAV for settlement'},
       {title:'Step 3: Reject NAV Submission', detail:[
         ['Submitted NAV','$102.47 (from Valuation Agent)'],
         ['Bloomberg Reference','$101.72'],
@@ -1550,9 +1589,9 @@ const DEAL_STEPS_BY_ROLE = {
         ['Data Sources','Bloomberg, Reuters, internal models'],
         ['Status','<span class="badge yellow">Awaiting NAV Window</span>']
       ], log:'NOTIFICATION: Deposit request queued | Preparing valuation data sources for next NAV strike'},
-      {title:'Step 2: Compliance Gate (Not My Action)', detail:[
+      {title:'Step 2: Transaction Screening (Not My Action)', detail:[
         ['Status','<span class="badge green">Handled by Curator</span>'],
-        ['Visibility','I do not see KYC details (privacy-preserved)'],
+        ['Visibility','I do not see compliance details (privacy-preserved)'],
         ['My Preparation','Gathering market data for NAV calculation'],
         ['Price Sources','Bloomberg: $102.41 | Reuters: $102.44 | Model: $102.52']
       ], log:'COMPLIANCE: Handled by Curator (not visible to me) | Gathering pricing: BBG $102.41, RTR $102.44'},
@@ -1600,10 +1639,10 @@ const DEAL_STEPS_BY_ROLE = {
         ['Notification','Deposit request queued'],
         ['Status','<span class="badge yellow">Preparing Valuation</span>']
       ], log:'NOTIFICATION: Orders queued | Preparing NAV calculation'},
-      {title:'Step 2: Compliance Cleared', detail:[
+      {title:'Step 2: Screening Cleared (Not My Action)', detail:[
         ['Status','<span class="badge green">Cleared by Curator</span>'],
         ['My Preparation','Finalizing NAV calculation']
-      ], log:'COMPLIANCE: Cleared | Finalizing my NAV submission'},
+      ], log:'COMPLIANCE: Per-transaction screening cleared by Curator | Finalizing my NAV submission'},
       {title:'Step 3: My NAV Rejected by Curator', detail:[
         ['My Submitted NAV','$102.47'],
         ['Curator Feedback','<span class="badge red">REJECTED: Deviation too high</span>'],
@@ -1644,7 +1683,7 @@ const DEAL_STEPS_BY_ROLE = {
         ['Status','<span class="badge yellow">Processing</span>']
       ], log:'SYSTEM: requestDeposit() event | Vault 0x4a2b | Queue: 4 orders | Load: 2.1% | Gas: 12 gwei'},
       {title:'Step 2: Compliance Module Execution', detail:[
-        ['Module','On-chain whitelist + off-chain KYC oracle'],
+        ['Module','On-chain whitelist + off-chain compliance oracle'],
         ['Oracle Response Time','240ms'],
         ['Whitelist Contract','Updated (1 address added)'],
         ['Governance Check','No parameter changes pending'],
@@ -1683,7 +1722,7 @@ const DEAL_STEPS_BY_ROLE = {
         ['System Health','<span class="badge green">Normal</span>']
       ], log:'SYSTEM: requestDeposit() event | New order in pipeline'},
       {title:'Step 2: Compliance Module - Rejection Event', detail:[
-        ['Event','KYC oracle returned REJECT'],
+        ['Event','Compliance oracle returned REJECT (OFAC match)'],
         ['Triggered Action','ERC-7887 cancellation flow initiated'],
         ['Contract Call','cancelDepositRequest(0x042)'],
         ['Refund Pipeline','$2M USDC queued for return'],
