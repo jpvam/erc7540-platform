@@ -616,16 +616,7 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
         <div id="dealRoleBanner" style="display:flex;align-items:center;gap:10px;margin-bottom:16px;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:10px">
           <div style="font-size:12px;color:var(--text2)">Viewing as:</div>
           <div id="dealRoleLabel" style="font-size:13px;font-weight:700;color:var(--yellow)">Investor</div>
-          <div style="flex:1"></div>
-          <div id="dealRoleDesc" style="font-size:11px;color:var(--text2);text-align:right">You see your own orders, status, and claims</div>
-        </div>
-        <div style="margin-bottom:16px;padding:10px 14px;background:rgba(180,154,255,.08);border:1px solid rgba(180,154,255,.2);border-radius:8px;font-size:11px;color:var(--text2);display:flex;align-items:center;gap:8px">
-          <span style="color:var(--purple);font-size:14px">&#9432;</span>
-          <span><strong style="color:var(--purple)">Prerequisite:</strong> Initial KYC/AML onboarding and wallet whitelisting is completed before an investor can interact with the vault. The compliance step below is the <strong>per-transaction screening</strong> (sanctions re-check, accreditation, source-of-funds) that runs on each order.</span>
-        </div>
-        <div style="margin-bottom:16px;padding:10px 14px;background:rgba(236,251,62,.06);border:1px solid rgba(236,251,62,.15);border-radius:8px;font-size:11px;color:var(--text2);display:flex;align-items:center;gap:8px">
-          <span style="color:var(--yellow);font-size:14px">&#9432;</span>
-          <span><strong style="color:var(--yellow)">Forward Pricing:</strong> Investors submit a <strong>dollar amount</strong>, not a share quantity. The exact number of units is calculated only after the NAV strike price is determined. This prevents front-running and is mandatory for regulated fund structures (UCITS, SEC Rule 22c-1).</span>
+          <div style="font-size:11px;color:var(--text2);margin-left:6px;padding-left:10px;border-left:1px solid var(--border)" id="dealRoleDesc">You see your own orders, status, and claims</div>
         </div>
         <div class="toggle-group" style="margin-bottom:20px">
           <button class="toggle-btn active" onclick="setDealPath('happy')">Happy Path</button>
